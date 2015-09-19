@@ -1,3 +1,3 @@
 module.exports=function(app){
-	//require('./register.js')(app);
+	require('./qqphoto-login.js')(app);
 };

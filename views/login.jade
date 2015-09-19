@@ -1,0 +1,23 @@
+doctype html
+html(lang='zh-CN')
+	head
+		title 管理员登录
+		meta(http-equiv="Content-Type",content="text/html; charset=utf-8")
+		meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+		link(type="text/css",rel="stylesheet",href="/css/style.css")
+		link(type="text/css",rel="stylesheet",href="/css/login.css")
+	body
+		form(action='/admin',method='post')
+			.tip
+			.formgroup.clearfix
+				label.l(for="userName")  用户名：
+				.input
+					input(id='userName',name="userName",autofocus)
+			.formgroup.clearfix
+				label.l(for="password")  密&emsp;码：
+				.input
+					input(id='password',name='password')
+			.button.clearfix
+				button.r.btn-ok(type='submit') 登录
+		script(src="/js/lib/require.js",type="text/javascript",data-main="/js/config")
+		script(src="/js/login.js",type="text/javascript")

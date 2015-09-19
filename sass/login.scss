@@ -1,0 +1,9 @@
+form{
+	margin:100px  auto 0 auto;
+	width:300px;
+	label{width:80px;margin-top:5px;}
+	.input{margin-left:80px;}
+	input{width:100%;box-sizing:border-box;border:1px solid #cecece;padding:7px 3px;}
+	.formgroup,.tip,.button{margin-bottom:20px;}
+	.tip{height:30px;line-height:30px;color:#a94442;text-align:center;}
+}

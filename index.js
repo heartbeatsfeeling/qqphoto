@@ -20,7 +20,7 @@ app.use(log4js.connectLogger(logger, {
 	format: ':method :url :remote-addr'
 }));
 //end log
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/static"));
 app.set('view engine', 'jade');
 app.set('views', __dirname + "/views");
 app.use(require('body-parser')());

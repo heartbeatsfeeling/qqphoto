@@ -1,0 +1,16 @@
+.btn{
+	border-radius:3px;
+	border:0 none;
+	padding:5px 10px;
+	cursor:pointer;
+}
+.btn-ok{
+	@extend .btn;
+	color: #fff;
+	background-color:#5cb85c;
+}
+.btn-cancel{
+	@extend .btn;
+	color: #333;
+	background-color:#e6e6e6;
+}
