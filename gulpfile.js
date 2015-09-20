@@ -6,4 +6,6 @@ gulp.task('css',function(){
 	.pipe(sass())
 	.pipe(gulp.dest('static/css/'))
 });
+
+
 gulp.watch("sass/**/*.scss",['css']);
