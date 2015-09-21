@@ -2,11 +2,13 @@
 @import "com/layout.scss";
 @import "com/button.scss";
 .loading1{
+	display: inline-block;
 	background:url("../images/loading1.gif") 0 0 no-repeat;
 	width:16px;
 	height:16px;
 }
 .loading2{
+	display: inline-block;
 	background:url("../images/loading2.gif") 0 0 no-repeat;
 	width:16px;
 	height:16px;
