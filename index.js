@@ -1,6 +1,29 @@
 var express = require('express');
 var app = express();
 var log4js = require('log4js');
+var multer = require('multer');
+//db
+var mongodb = require('mongodb');
+var MongoClient = mongodb.MongoClient;
+var db;
+var config = require("./config")();
+MongoClient.connect(config.mongodb, function(err, database) {
+	if (err) {
+		console.log(err);
+	} else {
+		db = database;
+		require('./routes')(app,db);
+		//500
+		//404
+		app.use(function(req, res) { //404
+			res.render('404');
+		});
+		app.use(function(err, req, res) { //500
+			res.render('500');
+		});
+		console.log("Listening on port 3000");
+	};
+});
 //log
 log4js.configure({
 	appenders: [{
@@ -27,19 +50,7 @@ app.use(require('body-parser')());
 app.use(require('express-session')({
 	secret: 'keyboard cat'
 }));
-app.get('/', function(req, res) { //首页
-	res.render('index');
-});
-require('./routes')(app);
-//500
-app.get('/500', function(req, res) {
-	res.render('500');
-});
-//404
-app.use(function(req, res) { //404
-	res.render('404');
-});
-app.use(function(err, req, res) { //500
-	res.render('500');
-});
+app.use(multer({
+	dest: './static/upload/'
+}))
 app.listen(3000);

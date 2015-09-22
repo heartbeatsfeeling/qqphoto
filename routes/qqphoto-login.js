@@ -1,19 +1,6 @@
-module.exports = function(app) { //登录
+module.exports = function(app,db) { //登录
 	var crypto = require('crypto');
-	var mongodb = require('mongodb');
-	var MongoClient = mongodb.MongoClient;
-	var db;
-	var config = require("../config")();
-	MongoClient.connect(config.mongodb, function(err, database) {
-		if (err) {
-			console.log(err);
-		} else {
-			db = database;
-			console.log("Listening on port 3000");
-		};
-	});
 	app.get("/admin", function(req, res) { //管理员
-		console.log(req.session)
 		res.render('login');
 	});
 	app.post("/admin", function(req, res) {

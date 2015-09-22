@@ -17,10 +17,10 @@ require(['config'], function(config) {
 						dataType:"json",
 						success: function(data) {
 							if(data.code==0){
-								console.log(data.msg)
 								$('.tip').html(data.msg)
 							}else{
-								$('.tip').html("")
+								$('.tip').html("");
+								window.location.href='/add'
 							}
 						},
 						error: function() {},
