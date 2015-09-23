@@ -20,7 +20,7 @@ require(['config'], function(config) {
 								$('.tip').html(data.msg)
 							}else{
 								$('.tip').html("");
-								window.location.href='/add'
+								window.location.href='/addArticle'
 							}
 						},
 						error: function() {},

@@ -1,0 +1,37 @@
+doctype html
+html(lang='zh-CN')
+	head
+		title 文章列表
+		meta(http-equiv="Content-Type",content="text/html; charset=utf-8")
+		meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+		link(type="text/css",rel="stylesheet",href="/css/style.css")
+		link(type="text/css",rel="stylesheet",href="/css/articleList.css")
+	body
+		table
+			- if (data)
+				tr
+					th 标题
+					th 描述
+					th 类型
+					th 图片
+					th 作者
+					th 时间
+					th 状态
+					th 操作
+				each d in data
+					tr
+						td #{d.title}
+						td #{d.desc}
+						td #{d.type}
+						td
+							img(src=d.imgSrc,width='50',height='50')
+						td #{d.author}
+						td #{d.updateTime}
+						td #{d.status}
+						td 
+
+			- else
+				tr
+					th #{msg}
+		script(src="/js/lib/require.js",type="text/javascript",data-main="/js/config")
+		script(src="/js/articleList.js",type="text/javascript")

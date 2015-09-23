@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var log4js = require('log4js');
-var multer = require('multer');
 //db
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
@@ -12,7 +11,7 @@ MongoClient.connect(config.mongodb, function(err, database) {
 		console.log(err);
 	} else {
 		db = database;
-		require('./routes')(app,db);
+		require('./routes')(app,db,config);
 		//500
 		//404
 		app.use(function(req, res) { //404
@@ -50,7 +49,4 @@ app.use(require('body-parser')());
 app.use(require('express-session')({
 	secret: 'keyboard cat'
 }));
-app.use(multer({
-	dest: './static/upload/'
-}))
 app.listen(3000); 

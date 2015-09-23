@@ -1,9 +1,9 @@
 module.exports = function(app,db) { //登录
 	var crypto = require('crypto');
-	app.get("/admin", function(req, res) { //管理员
+	app.get("/login", function(req, res) { //管理员
 		res.render('login');
 	});
-	app.post("/admin", function(req, res) {
+	app.post("/login", function(req, res) {
 		var body = req.body,
 			userName = body.userName,
 			password = body.password,

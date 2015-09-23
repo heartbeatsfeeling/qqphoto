@@ -7,7 +7,9 @@ html(lang='zh-CN')
 		link(type="text/css",rel="stylesheet",href="/css/style.css")
 		link(type="text/css",rel="stylesheet",href="/css/addArticle.css")
 	body
-		form(action='/add',method='post',enctype='multipart/form-data')
+		form(action='/addArticle',method='post',enctype='multipart/form-data')
+			p
+				
 			.error #{msg}
 			h1 发布文章
 			.formgroup.clearfix
@@ -24,9 +26,8 @@ html(lang='zh-CN')
 				label.l(for="type") 类型
 				.input
 					select#type(name='type')
-						-select=[{name:"男生头像",value:"nanshengtouxiang"}, {name:"女生头像",value:"nvshengtouxiang"}, {name:"情侣头像",value:"qinglvtouxiang"}, {name:"卡通头像",value:"katongtouxiang"}, {name:"黑系",value:"hetouxiang"}, {name:"白系",value:"baitouxiang"}, {name:"动态头像",value:"dongtaitouxiang"}, {name:"代文字头像",value:"wenzitouxiang"}, {name:"欧美头像",value:"oumeitouxiang"}, {name:"动漫头像",value:"dongmantouxiang"}, {name:"微信头像",value:"weixintouxiang"}, {name:"美女头像",value:"meinvtouxiang"}, {name:"帅哥头像",value:"shuaigetouxiang"}, {name:"非主流头像",value:"fzltouxiang"}, {name:"可爱头像",value:"keaitouxiang"}]
-						each option in select
-							option(value=option.value) #{option.name}
+						each value,key in data
+							option(value=key) #{value}
 				.tip.clearfix
 			
 			.formgroup.clearfix
@@ -36,7 +37,5 @@ html(lang='zh-CN')
 				.tip.clearfix
 			.button.clearfix
 				button.r.btn-ok 提交
-		script.
-			var success=#{success}
 		script(src="/js/lib/require.js",type="text/javascript",data-main="/js/config")
 		script(src="/js/addArticle.js",type="text/javascript")

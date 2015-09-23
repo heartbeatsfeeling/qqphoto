@@ -1,0 +1,14 @@
+body {
+  width: 98%;
+  margin: 10px auto; }
+
+table {
+  width: 100%;
+  line-height: 30px; }
+  table th {
+    text-align: left;
+    background-color: #cecece; }
+  table th, table td {
+    padding: 8px 3px; }
+  table td img {
+    vertical-align: middle; }

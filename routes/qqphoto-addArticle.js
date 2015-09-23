@@ -1,16 +1,25 @@
-module.exports = function(app,db) {
-	app.get('/add', function(req, res) {
+module.exports = function(app,db,config) {
+	var multer = require('multer');
+	app.get('/addArticle', function(req, res) {
 		var userName=req.session.userName;
 		if(userName){
-			res.render('add',{
+			res.render('addArticle',{
 				msg:"",
+				data:config.type,
 				success:false
 			})
 		}else{
-			res.redirect("/admin");
+			res.redirect("/login");
 		}
 	});
-	app.post('/add', function(req,res) {
+	app.post('/addArticle', multer({
+		dest: './static/upload/',
+		onFileUploadStart:function(file){
+			if (file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg') {
+				return false;
+			}
+		}
+	}),function(req,res) {
 		var file=req.files.file,
 			body=req.body,
 			img,
@@ -22,20 +31,20 @@ module.exports = function(app,db) {
 			userName='',
 			type=body.type;
 		if(!file){
-			msg="头像不能为空";
-			res.render('add',{
+			msg="头像不能为空或是格式不正确";
+			res.render('addArticle',{
 				msg:msg,
 				success:false
 			});
 		}else if(!title){
 			msg="标题不能为空";
-			res.render('add',{
+			res.render('addArticle',{
 				msg:msg,
 				success:false
 			});
 		}else if(!desc){
 			msg="描述不能为空";
-			res.render('add',{
+			res.render('addArticle',{
 				msg:msg,
 				success:false
 			});
@@ -51,6 +60,7 @@ module.exports = function(app,db) {
 						title:title,
 						imgSrc:img,
 						updateTime:(+new Date()).toString(),
+						type:body.type,
 						up:0,
 						down:0,
 						collect:0,
@@ -59,26 +69,23 @@ module.exports = function(app,db) {
 					},function(err){
 						if(err){
 							msg="数据库操作失败"
-							res.render('add',{
+							res.render('addArticle',{
 								msg:msg,
 								success:false
 							});
-							return true;
+							return false;
 						}else{
-							res.render('add',{
-								msg:"",
-								success:true
-							});
+							res.redirect('/articleList/1');
 							return true;
 						}
 					})
 				}else{
-					res.redirect('/admin');
-					return true;
+					res.redirect('/login');
+					return false;
 				}
 			}else{
 				msg="图片格式不正确";
-				res.render('add',{
+				res.render('addArticle',{
 					msg:msg,
 					success:false
 				});

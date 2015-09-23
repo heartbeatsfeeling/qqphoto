@@ -1,0 +1,15 @@
+body{width:98%;margin:10px auto;}
+table{
+	width:100%;
+	line-height: 30px;
+	th{
+		text-align: left;
+		background-color: #cecece;
+	}
+	th,td{
+		padding:8px 3px;
+	}
+	td{
+		img{vertical-align: middle;}
+	}
+}

@@ -1,13 +1,13 @@
 doctype html
 html(lang='zh-CN')
 	head
-		title 管理员登录
+		title 用户登录
 		meta(http-equiv="Content-Type",content="text/html; charset=utf-8")
 		meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
 		link(type="text/css",rel="stylesheet",href="/css/style.css")
 		link(type="text/css",rel="stylesheet",href="/css/login.css")
 	body
-		form(action='/admin',method='post')
+		form(action='/login',method='post')
 			.tip
 			.formgroup.clearfix
 				label.l(for="userName")  用户名：
@@ -16,7 +16,7 @@ html(lang='zh-CN')
 			.formgroup.clearfix
 				label.l(for="password")  密&emsp;码：
 				.input
-					input(id='password',name='password')
+					input(id='password',name='password',type='password')
 			.button.clearfix
 				button.r.btn-ok(type='submit') 登录
 		script(src="/js/lib/require.js",type="text/javascript",data-main="/js/config")
