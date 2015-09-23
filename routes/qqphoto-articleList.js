@@ -1,4 +1,4 @@
-module.exports = function(app, db,config) {
+module.exports = function(app, db, config) {
 	app.get("/articleList/:id", function(req, res) {
 		var moment = require('moment');
 		var userName = req.session.userName;
@@ -22,18 +22,25 @@ module.exports = function(app, db,config) {
 				} else {
 					if (doc.length) {
 						data = doc.splice(skip, num);
-						data.forEach(function(item,index){
-							item.updateTime=moment(Number(item.updateTime)).format("YYYY-MM-DD HH:mm");
-							item.imgSrc="/upload/"+item.imgSrc;
-							item.status=item.status==0?"审核":"正常显示";
-							item.type=config.type[item.type];
-						})
-						res.render('articleList', {
-							msg: "",
-							data: data
-						});
+						if (data.length) {
+							data.forEach(function(item, index) {
+								item.updateTime = moment(Number(item.updateTime)).format("YYYY-MM-DD HH:mm");
+								item.imgSrc = "/upload/" + item.imgSrc;
+								item.status = item.status == 0 ? "审核" : "正常显示";
+								item.type = config.type[item.type];
+							});
+							res.render('articleList', {
+								msg: "",
+								data: data
+							});
+						}else{
+							res.render('404');
+						}
+						
 					} else {
-						res.render('404');
+						res.render('articleList', {
+							msg: "没有文章"
+						});
 					}
 				}
 			})
