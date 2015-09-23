@@ -53,4 +53,4 @@ app.use(require('express-session')({
 app.use(multer({
 	dest: './static/upload/'
 }))
-app.listen(3000);
+app.listen(3000); 
