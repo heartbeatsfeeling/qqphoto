@@ -1,14 +1,17 @@
-body {
-  width: 98%;
-  margin: 10px auto; }
-
 table {
   width: 100%;
+  margin: 0 auto;
   line-height: 30px; }
   table th {
     text-align: left;
     background-color: #cecece; }
   table th, table td {
     padding: 8px 3px; }
-  table td img {
-    vertical-align: middle; }
+  table td {
+    border-bottom: 1px solid #cecece; }
+    table td img {
+      vertical-align: middle;
+      cursor: pointer; }
+
+#pagination {
+  float: right; }

@@ -15,13 +15,14 @@ module.exports = function(app, db, config) {
 				}
 			}).toArray(function(err, doc) {
 				var data = null;
+				var cloneDoc=doc.slice(0);
 				if (err) {
 					res.render('articleList', {
 						msg: "查询出错"
 					});
 				} else {
 					if (doc.length) {
-						data = doc.splice(skip, num);
+						data = cloneDoc.splice(skip, num);
 						if (data.length) {
 							data.forEach(function(item, index) {
 								item.updateTime = moment(Number(item.updateTime)).format("YYYY-MM-DD HH:mm");
@@ -30,7 +31,9 @@ module.exports = function(app, db, config) {
 								item.type = config.type[item.type];
 							});
 							res.render('articleList', {
+								totalPage:Math.ceil((doc.length)/num),
 								msg: "",
+								current:"articleList",
 								data: data
 							});
 						}else{

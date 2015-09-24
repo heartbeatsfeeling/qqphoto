@@ -7,9 +7,8 @@ html(lang='zh-CN')
 		link(type="text/css",rel="stylesheet",href="/css/style.css")
 		link(type="text/css",rel="stylesheet",href="/css/addArticle.css")
 	body
+		include com/admin-header
 		form(action='/addArticle',method='post',enctype='multipart/form-data')
-			p
-				
 			.error #{msg}
 			h1 发布文章
 			.formgroup.clearfix

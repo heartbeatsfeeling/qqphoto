@@ -6,7 +6,9 @@ html(lang='zh-CN')
 		meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
 		link(type="text/css",rel="stylesheet",href="/css/style.css")
 		link(type="text/css",rel="stylesheet",href="/css/articleList.css")
+		link(type="text/css",rel="stylesheet",href="/css/ui-dialog.css")
 	body
+		include com/admin-header
 		table
 			- if (data)
 				tr
@@ -24,7 +26,7 @@ html(lang='zh-CN')
 						td #{d.desc}
 						td #{d.type}
 						td
-							img(src=d.imgSrc,width='50',height='50')
+							img(src=d.imgSrc,width='80',height='80',title="点击放大").minImg
 						td #{d.author}
 						td #{d.updateTime}
 						td #{d.status}
@@ -33,5 +35,9 @@ html(lang='zh-CN')
 			- else
 				tr
 					th #{msg}
+		.pagination-sm.clearfix
+			ul#pagination
+		script.
+			var totalPage=#{totalPage};
 		script(src="/js/lib/require.js",type="text/javascript",data-main="/js/config")
 		script(src="/js/articleList.js",type="text/javascript")

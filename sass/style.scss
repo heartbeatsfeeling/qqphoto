@@ -1,6 +1,7 @@
 @import "com/reset.scss";
 @import "com/layout.scss";
 @import "com/button.scss";
+@import "com/page.scss";
 .loading1{
 	display: inline-block;
 	background:url("../images/loading1.gif") 0 0 no-repeat;
@@ -12,4 +13,25 @@
 	background:url("../images/loading2.gif") 0 0 no-repeat;
 	width:16px;
 	height:16px;
+}
+.admin-header{
+	background-color: #0666c5;
+	ul{
+		height:50px;
+		line-height: 50px;
+		padding-left:10px;
+		padding-right:10px;
+	}
+	li{
+		float:left;
+		padding:0 20px;
+		a{
+			display: inline-block;
+			text-decoration: none;
+			color:#fff;
+		}
+	}
+	.current{
+		background-color: #075fb6;
+	}
 }

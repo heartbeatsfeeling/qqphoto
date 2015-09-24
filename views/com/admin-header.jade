@@ -1,0 +1,17 @@
+.admin-header.clearfix
+	ul.l
+		if current=='addArticle'
+			li.current
+				a(href='/addArticle',title="发布文章") 发布文章
+		else
+			li
+				a(href='/addArticle',title="发布文章") 发布文章
+		if current=='articleList'
+			li.current
+				a(href='/articleList/1',title="文章列表") 文章列表
+		else
+			li
+				a(href='/articleList/1',title="文章列表") 文章列表
+	ul.r
+		li
+			a(href='/loginOut',title="退出") 退出	

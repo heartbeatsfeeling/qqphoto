@@ -6,7 +6,8 @@ module.exports = function(app,db,config) {
 			res.render('addArticle',{
 				msg:"",
 				data:config.type,
-				success:false
+				success:false,
+				current:"addArticle"
 			})
 		}else{
 			res.redirect("/login");
@@ -34,19 +35,22 @@ module.exports = function(app,db,config) {
 			msg="头像不能为空或是格式不正确";
 			res.render('addArticle',{
 				msg:msg,
-				success:false
+				success:false,
+				current:"addArticle"
 			});
 		}else if(!title){
 			msg="标题不能为空";
 			res.render('addArticle',{
 				msg:msg,
-				success:false
+				success:false,
+				current:"addArticle"
 			});
 		}else if(!desc){
 			msg="描述不能为空";
 			res.render('addArticle',{
 				msg:msg,
-				success:false
+				success:false,
+				current:"addArticle"
 			});
 		}else{
 			img=file.name;
@@ -71,7 +75,8 @@ module.exports = function(app,db,config) {
 							msg="数据库操作失败"
 							res.render('addArticle',{
 								msg:msg,
-								success:false
+								success:false,
+								current:"addArticle"
 							});
 							return false;
 						}else{
@@ -87,7 +92,8 @@ module.exports = function(app,db,config) {
 				msg="图片格式不正确";
 				res.render('addArticle',{
 					msg:msg,
-					success:false
+					success:false,
+					current:"addArticle"
 				});
 			}
 		}
