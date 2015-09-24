@@ -220,9 +220,9 @@ legend {
     padding-left: 10px;
     padding-right: 10px; }
   .admin-header li {
-    float: left;
-    padding: 0 20px; }
+    float: left; }
     .admin-header li a {
+      padding: 0 20px;
       display: inline-block;
       text-decoration: none;
       color: #fff; }

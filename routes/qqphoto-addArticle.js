@@ -6,7 +6,6 @@ module.exports = function(app,db,config) {
 			res.render('addArticle',{
 				msg:"",
 				data:config.type,
-				success:false,
 				current:"addArticle"
 			})
 		}else{
@@ -35,21 +34,21 @@ module.exports = function(app,db,config) {
 			msg="头像不能为空或是格式不正确";
 			res.render('addArticle',{
 				msg:msg,
-				success:false,
+				data:config.type,
 				current:"addArticle"
 			});
 		}else if(!title){
 			msg="标题不能为空";
 			res.render('addArticle',{
 				msg:msg,
-				success:false,
+				data:config.type,
 				current:"addArticle"
 			});
 		}else if(!desc){
 			msg="描述不能为空";
 			res.render('addArticle',{
 				msg:msg,
-				success:false,
+				data:config.type,
 				current:"addArticle"
 			});
 		}else{
@@ -75,7 +74,7 @@ module.exports = function(app,db,config) {
 							msg="数据库操作失败"
 							res.render('addArticle',{
 								msg:msg,
-								success:false,
+								data:config.type,
 								current:"addArticle"
 							});
 							return false;
@@ -92,7 +91,7 @@ module.exports = function(app,db,config) {
 				msg="图片格式不正确";
 				res.render('addArticle',{
 					msg:msg,
-					success:false,
+					data:config.type,
 					current:"addArticle"
 				});
 			}

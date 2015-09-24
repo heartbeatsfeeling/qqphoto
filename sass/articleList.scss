@@ -13,6 +13,11 @@ table{
 		border-bottom:1px solid #cecece;
 		img{vertical-align: middle;cursor:pointer;}
 	}
+	a{
+		text-decoration: none;
+		margin-right:10px;
+		color:#0666c5;
+	}
 }
 #pagination{
 	float:right;

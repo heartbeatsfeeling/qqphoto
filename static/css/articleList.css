@@ -12,6 +12,10 @@ table {
     table td img {
       vertical-align: middle;
       cursor: pointer; }
+  table a {
+    text-decoration: none;
+    margin-right: 10px;
+    color: #0666c5; }
 
 #pagination {
   float: right; }

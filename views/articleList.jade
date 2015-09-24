@@ -21,7 +21,7 @@ html(lang='zh-CN')
 					th 状态
 					th 操作
 				each d in data
-					tr
+					tr(data-id=d._id)
 						td #{d.title}
 						td #{d.desc}
 						td #{d.type}
@@ -30,7 +30,9 @@ html(lang='zh-CN')
 						td #{d.author}
 						td #{d.updateTime}
 						td #{d.status}
-						td 
+						td
+							a.ok(href="/articleOk?id=#{d._id}",title="审核") 审核
+							a.del(href="/articleDel/?id=#{d._id}",title="删除") 删除
 
 			- else
 				tr
