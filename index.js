@@ -11,7 +11,7 @@ MongoClient.connect(config.mongodb, function(err, database) {
 		console.log(err);
 	} else {
 		db = database;
-		require('./routes')(app,db,config);
+		require('./routes')(app,db,config,logger);
 		//500
 		//404
 		app.use(function(req, res) { //404
@@ -37,7 +37,7 @@ log4js.configure({
 	replaceConsole: true
 });
 var logger = log4js.getLogger('normal');
-logger.setLevel('INFO');
+logger.setLevel('WARN');
 app.use(log4js.connectLogger(logger, {
 	format: ':method :url :remote-addr'
 }));

@@ -1,5 +1,6 @@
-module.exports = function(app,db,config) {
-	var multer = require('multer');
+module.exports = function(app,db,config,logger) {
+	var multer = require('multer'),
+		pFlg="qqphoto-addArticle";
 	app.get('/addArticle', function(req, res) {
 		var userName=req.session.userName;
 		if(userName){
@@ -37,8 +38,10 @@ module.exports = function(app,db,config) {
 				data:config.type,
 				current:"addArticle"
 			});
+			logger.warn(msg,pFlg,req.ip)
 		}else if(!title){
 			msg="标题不能为空";
+			logger.warn(msg,pFlg,req.ip)
 			res.render('addArticle',{
 				msg:msg,
 				data:config.type,
@@ -46,6 +49,7 @@ module.exports = function(app,db,config) {
 			});
 		}else if(!desc){
 			msg="描述不能为空";
+			logger.warn(msg,pFlg,req.ip)
 			res.render('addArticle',{
 				msg:msg,
 				data:config.type,
@@ -72,6 +76,7 @@ module.exports = function(app,db,config) {
 					},function(err){
 						if(err){
 							msg="数据库操作失败"
+							logger.warn(msg,pFlg,req.ip)
 							res.render('addArticle',{
 								msg:msg,
 								data:config.type,
@@ -89,6 +94,7 @@ module.exports = function(app,db,config) {
 				}
 			}else{
 				msg="图片格式不正确";
+				logger.warn(msg,pFlg,req.ip)
 				res.render('addArticle',{
 					msg:msg,
 					data:config.type,

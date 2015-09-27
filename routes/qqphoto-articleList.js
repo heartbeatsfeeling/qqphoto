@@ -1,11 +1,13 @@
-module.exports = function(app, db, config) {
+module.exports = function(app, db, config, logger) {
+	var pFlg = "qqphoto-articleList";
 	app.get("/articleList/:id", function(req, res) {
-		var moment = require('moment');
-		var userName = req.session.userName;
-		var num = 10;
-		var id = req.params.id;
-		var skip = (id - 1) * num;
-		var page = num * id;
+		var moment = require('moment'),
+			userName = req.session.userName,
+			num = 10,
+			id = req.params.id,
+			skip = (id - 1) * num,
+			page = num * id,
+			msg = "";
 		if (userName) {
 			db.collection('article').find({
 				author: userName
@@ -17,8 +19,10 @@ module.exports = function(app, db, config) {
 				var data = null;
 				var cloneDoc = doc.slice(0);
 				if (err) {
+					msg = "查询出错";
+					logger.warn(msg, pFlg, req.ip)
 					res.render('articleList', {
-						msg: "查询出错"
+						msg: msg
 					});
 				} else {
 					if (doc.length) {
@@ -58,8 +62,11 @@ module.exports = function(app, db, config) {
 			userName = req.session.userName,
 			password = req.session.password,
 			xhr = req.xhr,
+			sourceRef=req.headers.referer,
 			code = 0;
 		if (!userName) {
+			msg = "请先登录";
+			logger.warn(msg, userName, pFlg, req.ip)
 			if (xhr) {
 				res.json({
 					msg: "请先登录",
@@ -72,66 +79,103 @@ module.exports = function(app, db, config) {
 		} else {
 			if (id) {
 				db.collection('user').find({
-					userName: userName,
+					name: userName,
 					password: password
 				}).toArray(function(err, doc) {
 					if (err) {
+						msg = "数据库操作失败";
+						logger.warn(msg, pFlg, req.ip)
 						if (xhr) {
 							res.json({
-								msg: "数据库操作失败",
+								msg: msg,
 								code: "0"
 							});
-							console.warn("数据库操作失败:qqphoto-articleList:1");
 						} else {
-							res.redirect("/articleList/1");
-							console.warn("数据库操作失败:qqphoto-articleList:2");
+							res.redirect(sourceRef);
 						}
 					} else {
 						if (doc.length) {
 							if (doc[0].type == 1) {
+								db.collection('article').update({
+									_id: require("mongodb").ObjectId(id)
+								}, {
+									$set: {
+										status: "1"
+									}
+								}, function(err, doc) {
+									if (err) {
+										msg = "数据库操作失败"
+										if (xhr) {
+											res.json({
+												msg: msg,
+												code: "0"
+											});
+										} else {
+											res.redirect("/loginOut");
+										}
+									} else {
+										if (doc.result.n == 1) {
+											msg = "操作成功";
+											if (xhr) {
+												res.json({
+													msg: msg,
+													code: "1"
+												});
+											} else {
+												res.redirect(req.headers.referer);
+											};
+										} else {
+											msg = "文章不存在";
+											logger.warn(msg, userName, pFlg, req.ip)
+											if (xhr) {
+												res.json({
+													msg: msg,
+													code: "0"
+												});
+											} else {
+												res.redirect(req.headers.referer);
+											}
+										}
 
+									}
+								})
 							} else {
+								msg = "该用户没有权限";
+								logger.warn(msg, userName, pFlg, req.ip)
 								if (xhr) {
 									res.json({
-										msg: "该用户没有权限",
+										msg: msg,
 										code: "0"
 									});
 								} else {
 									res.redirect("/loginOut");
-
 								}
-								console.warn("该用户没有权限:qqphoto-articleList");
 							}
 						} else {
+							msg = "用户名或密码不正确";
+							logger.warn(msg, userName, pFlg, req.ip);
 							if (xhr) {
 								res.json({
-									msg: "用户名或密码不正确",
+									msg: msg,
 									code: "0"
 								});
-								
+
 							} else {
 								res.redirect("/loginOut");
 							}
-							console.warn("用户名或密码不正确:qqphoto-articleList");
 						}
 					}
-				})
-				if (xhr) {
-					res.json({
-						msg: "",
-						code: "1"
-					});
-				} else {
-					res.redirect("/articleList/1");
-				}
+				});
 			} else {
+				msg = "文章不存在";
+				logger.warn(msg, userName, pFlg, req.ip)
 				if (xhr) {
 					res.json({
-						msg: "文章不存在",
+						msg: msg,
 						code: "0"
 					});
 				} else {
-					res.redirect("/articleList/1");
+					res.redirect(sourceRef);
 				}
 			}
 		};
