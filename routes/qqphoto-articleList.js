@@ -56,128 +56,132 @@ module.exports = function(app, db, config, logger) {
 			res.redirect("/login");
 		}
 	});
-	app.get("/articleOk", function(req, res) { //审核
-		var id = req.query.id,
-			msg = '',
-			userName = req.session.userName,
-			password = req.session.password,
-			xhr = req.xhr,
-			sourceRef=req.headers.referer,
-			code = 0;
-		if (!userName) {
-			msg = "请先登录";
-			logger.warn(msg, userName, pFlg, req.ip)
-			if (xhr) {
-				res.json({
-					msg: "请先登录",
-					code: "0",
-					url: "/login"
-				});
+	var articleChange = function(url, cmd) {
+		app.get(url, function(req, res) { //审核
+			var id = req.query.id,
+				msg = '',
+				userName = req.session.userName,
+				password = req.session.password,
+				xhr = req.xhr,
+				sourceRef = req.headers.referer,
+				code = 0;
+			if (!userName) {
+				msg = "请先登录";
+				logger.warn(msg, userName, pFlg, req.ip)
+				if (xhr) {
+					res.json({
+						msg: "请先登录",
+						code: "0",
+						url: "/login"
+					});
+				} else {
+					res.redirect("/login");
+				}
 			} else {
-				res.redirect("/login");
-			}
-		} else {
-			if (id) {
-				db.collection('user').find({
-					name: userName,
-					password: password
-				}).toArray(function(err, doc) {
-					if (err) {
-						msg = "数据库操作失败";
-						logger.warn(msg, pFlg, req.ip)
-						if (xhr) {
-							res.json({
-								msg: msg,
-								code: "0"
-							});
+				if (id) {
+					db.collection('user').find({
+						name: userName,
+						password: password
+					}).toArray(function(err, doc) {
+						if (err) {
+							msg = "数据库操作失败";
+							logger.warn(msg, pFlg, req.ip)
+							if (xhr) {
+								res.json({
+									msg: msg,
+									code: "0"
+								});
+							} else {
+								res.redirect(sourceRef);
+							}
 						} else {
-							res.redirect(sourceRef);
-						}
-					} else {
-						if (doc.length) {
-							if (doc[0].type == 1) {
-								db.collection('article').update({
-									_id: require("mongodb").ObjectId(id)
-								}, {
-									$set: {
-										status: "1"
-									}
-								}, function(err, doc) {
-									if (err) {
-										msg = "数据库操作失败"
-										if (xhr) {
-											res.json({
-												msg: msg,
-												code: "0"
-											});
-										} else {
-											res.redirect("/loginOut");
+							if (doc.length) {
+								if (doc[0].type == 1) {
+									db.collection('article')[cmd]({
+										_id: require("mongodb").ObjectId(id)
+									}, {
+										$set: {
+											status: "1"
 										}
-									} else {
-										if (doc.result.n == 1) {
-											msg = "操作成功";
-											if (xhr) {
-												res.json({
-													msg: msg,
-													code: "1"
-												});
-											} else {
-												res.redirect(req.headers.referer);
-											};
-										} else {
-											msg = "文章不存在";
-											logger.warn(msg, userName, pFlg, req.ip)
+									}, function(err, doc) {
+										if (err) {
+											msg = "数据库操作失败"
 											if (xhr) {
 												res.json({
 													msg: msg,
 													code: "0"
 												});
 											} else {
-												res.redirect(req.headers.referer);
+												res.redirect("/loginOut");
 											}
-										}
+										} else {
+											if (doc.result.n == 1) {
+												msg = "操作成功";
+												if (xhr) {
+													res.json({
+														msg: msg,
+														code: "1"
+													});
+												} else {
+													res.redirect(req.headers.referer);
+												};
+											} else {
+												msg = "文章不存在";
+												logger.warn(msg, userName, pFlg, req.ip)
+												if (xhr) {
+													res.json({
+														msg: msg,
+														code: "0"
+													});
+												} else {
+													res.redirect(req.headers.referer);
+												}
+											}
 
+										}
+									})
+								} else {
+									msg = "该用户没有权限";
+									logger.warn(msg, userName, pFlg, req.ip)
+									if (xhr) {
+										res.json({
+											msg: msg,
+											code: "0"
+										});
+									} else {
+										res.redirect("/loginOut");
 									}
-								})
+								}
 							} else {
-								msg = "该用户没有权限";
-								logger.warn(msg, userName, pFlg, req.ip)
+								msg = "用户名或密码不正确";
+								logger.warn(msg, userName, pFlg, req.ip);
 								if (xhr) {
 									res.json({
 										msg: msg,
 										code: "0"
 									});
+
 								} else {
 									res.redirect("/loginOut");
 								}
 							}
-						} else {
-							msg = "用户名或密码不正确";
-							logger.warn(msg, userName, pFlg, req.ip);
-							if (xhr) {
-								res.json({
-									msg: msg,
-									code: "0"
-								});
-
-							} else {
-								res.redirect("/loginOut");
-							}
 						}
-					}
-				});
-			} else {
-				msg = "文章不存在";
-				logger.warn(msg, userName, pFlg, req.ip)
-				if (xhr) {
-					res.json({
-						msg: msg,
-						code: "0"
 					});
 				} else {
-					res.redirect(sourceRef);
+					msg = "文章不存在";
+					logger.warn(msg, userName, pFlg, req.ip)
+					if (xhr) {
+						res.json({
+							msg: msg,
+							code: "0"
+						});
+					} else {
+						res.redirect(sourceRef);
+					}
 				}
-			}
-		};
-	})
+			};
+		})
+	};
+	articleChange("/articleOk",'update');//更新文章状态
+	articleChange("/articleDel",'remove');//删除文章
 };

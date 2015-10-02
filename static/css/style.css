@@ -4,7 +4,8 @@ html {
   background: #fff; }
 
 html, body {
-  font-family: "Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,tahoma,arial,Verdana,sans-serif,"WenQuanYi Micro Hei","\5B8B\4F53"; }
+  font-family: "Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,tahoma,arial,Verdana,sans-serif,"WenQuanYi Micro Hei","\5B8B\4F53";
+  color: #333; }
 
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
   margin: 0;
@@ -68,6 +69,10 @@ legend {
 
 .clearfix {
   zoom: 1; }
+
+.container {
+  width: 980px;
+  margin: 0 auto; }
 
 .btn, .btn-ok, .btn-cancel {
   border-radius: 3px;
@@ -199,6 +204,30 @@ legend {
   color: #999999;
   cursor: not-allowed;
   background-color: #ffffff; }
+
+@font-face {
+  font-family: 'iconfont';
+  src: url("font/iconfont.eot");
+  /* IE9*/
+  src: url("font/iconfont.eot?#iefix") format("embedded-opentype"), url("font/iconfont.woff") format("woff"), url("font/iconfont.ttf") format("truetype"), url("iconfont.svg#iconfont") format("svg");
+  /* iOS 4.1- */ }
+
+.icon {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-xinsui:before {
+  content: "\e604"; }
+
+.icon-xin:before {
+  content: "\e622"; }
+
+.icon-liulan:before {
+  content: "\e6c9"; }
 
 .loading1 {
   display: inline-block;

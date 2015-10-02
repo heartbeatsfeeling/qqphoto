@@ -16,7 +16,7 @@ module.exports = function(app,db,config,logger) {
 	app.post('/addArticle', multer({
 		dest: './static/upload/',
 		onFileUploadStart:function(file){
-			if (file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg') {
+			if (file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png' && file.mimetype !== 'image/gif') {
 				return false;
 			}
 		}

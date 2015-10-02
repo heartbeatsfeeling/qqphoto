@@ -1,0 +1,99 @@
+a {
+  text-decoration: none; }
+
+extend1, .header-index, .footer-index {
+  width: 100%;
+  min-width: 980px;
+  height: 40px;
+  line-height: 40px; }
+
+.header-index {
+  background-color: #ff6793;
+  font-size: 14px; }
+  .header-index a {
+    color: #fff; }
+  .header-index .header-nav li {
+    float: left;
+    margin-left: 10px; }
+
+.main .item {
+  margin: 10px 0; }
+  .main .item li {
+    float: left; }
+  .main .item h2 {
+    line-height: 40px; }
+
+.main .subNav li {
+  width: 112px;
+  text-align: center;
+  line-height: 36px;
+  height: 36px;
+  margin: 5px; }
+
+.main .subNav a {
+  color: #666;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  background-color: #ececec;
+  transition: background 0.5s ease;
+  border-radius: 8px; }
+
+.main .subNav a:hover {
+  background-color: #ff6793;
+  color: #fff; }
+
+.main .hot li {
+  width: 180px;
+  margin: 0 14px 20px 0;
+  color: #888;
+  line-height: 24px; }
+
+.main .hot img {
+  vertical-align: middle; }
+
+.main .hot .img {
+  margin-bottom: 10px; }
+
+.main .hot .info {
+  font-size: 12px; }
+
+.main .hot .desc {
+  color: #4580af;
+  font-size: 12px; }
+
+.main .hot .like {
+  position: relative; }
+  .main .hot .like i {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 18px;
+    color: #ff6793;
+    text-align: left;
+    width: 50px;
+    height: 30px;
+    transition: font-size 0.3s ease;
+    overflow: hidden; }
+    .main .hot .like i span {
+      padding-left: 4px;
+      font-size: 14px;
+      vertical-align: 1px; }
+  .main .hot .like .icon-xinsui {
+    color: #009adb; }
+  .main .hot .like i:hover {
+    font-size: 20px; }
+
+.main #pagination {
+  float: right; }
+
+.footer-index {
+  text-align: center;
+  border-top: 1px solid #cecece;
+  padding-top: 8px;
+  background-color: #ff6793;
+  height: auto;
+  color: #fff; }
+  .footer-index p {
+    margin: 0;
+    padding: 0;
+    line-height: 30px; }

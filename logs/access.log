@@ -35,3 +35,6 @@
 [2015-09-27 20:14:10.689] [WARN] normal - 请先登录 undefined qqphoto-articleList ::ffff:127.0.0.1
 [2015-09-27 20:14:48.326] [WARN] normal - 请先登录 undefined qqphoto-articleList ::ffff:127.0.0.1
 [2015-09-27 20:17:58.830] [WARN] normal - http://127.0.0.1:3000/articleList/1
+[2015-09-29 22:14:35.413] [WARN] normal - 请先登录 undefined qqphoto-articleList ::ffff:127.0.0.1
+[2015-10-02 18:09:53.911] [WARN] normal - 头像不能为空或是格式不正确 qqphoto-addArticle ::ffff:127.0.0.1
+[2015-10-02 18:10:09.573] [WARN] normal - 头像不能为空或是格式不正确 qqphoto-addArticle ::ffff:127.0.0.1
