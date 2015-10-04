@@ -4,6 +4,8 @@ html(lang='zh-CN')
 		title QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像 QQ头像网 
 		meta(http-equiv="Content-Type",content="text/html; charset=utf-8")
 		meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+		meta(name="keywords",content="#{title} 最新的QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像 QQ头像网")
+		meta(name="description" content="欢迎来到QQ头像网，本站为您提供最新的QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像等。")
 		link(type="text/css",rel="stylesheet",href="/css/style.css")
 		link(type="text/css",rel="stylesheet",href="/css/common.css")
 	body
@@ -20,26 +22,28 @@ html(lang='zh-CN')
 						li
 							a(href="/index.html",title="QQ情侣头像") QQ情侣头像
 		.container.main
+			.item
+				include com/qqphoto-sliderNav
 			.item.hot
 				h2 #{title}
-					ul.clearfix
-						each item in data
-							li(data-id="#{item._id}")
-								.inner
-									.img
-										a(href="#")
-											img(src="#{item.imgSrc}",width=180,height=180,title="#{item.title}")
-									.desc #{item.desc}
-									.info.clearfix
-										.span.l #{item.time}
-										span.r #{item.author}
-									.like
-										i.icon-xin.icon.up(title="不错")
-											span #{item.up}
-										i.icon-xinsui.icon.down(title="太差")
-											span #{item.down}
-										i.icon-liulan.icon(title="浏览")
-											span #{item.view}
+				ul.clearfix
+					each item in data
+						li(data-id="#{item._id}")
+							.inner
+								.img
+									a(href="/article?id=#{item._id}",target="_blank")
+										img(src="upload/#{item.imgSrc[0].name}",width=180,height=180,title="#{item.title}")
+								.desc #{item.desc}
+								.info.clearfix
+									.span.l #{item.time}
+									span.r #{item.author}
+								.like
+									i.icon-xin.icon.up(title="不错")
+										span #{item.up}
+									i.icon-xinsui.icon.down(title="太差")
+										span #{item.down}
+									i.icon-liulan.icon(title="浏览")
+										span #{item.view}
 			.pagination-sm.clearfix
 				ul#pagination
 		.footer-index

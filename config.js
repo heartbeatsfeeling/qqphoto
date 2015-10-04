@@ -9,6 +9,7 @@ module.exports = function() {
 			"hetouxiang": "黑系",
 			"baitouxiang": "白系",
 			"dongtaitouxiang": "动态头像",
+			"shanggantouxiang":"伤感头像",
 			"wenzitouxiang": "代文字头像",
 			"oumeitouxiang": "欧美头像",
 			"dongmantouxiang": "动漫头像",

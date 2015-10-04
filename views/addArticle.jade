@@ -29,11 +29,12 @@ html(lang='zh-CN')
 							option(value=key) #{value}
 				.tip.clearfix
 			
-			.formgroup.clearfix
+			.formgroup.clearfix.photo
 				label.l(for="file") 头像
 				.input
 					input(type='file')#file(name="file")
 				.tip.clearfix
+				a.addPhoto(href="javascript:;",title="增加") 增加
 			.button.clearfix
 				button.r.btn-ok 提交
 		script(src="/js/lib/require.js",type="text/javascript",data-main="/js/config")

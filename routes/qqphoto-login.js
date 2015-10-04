@@ -2,7 +2,11 @@ module.exports = function(app,db,config,logger) { //登录
 	var crypto = require('crypto'),
 		pFlg="qqphoto-login";
 	app.get("/login", function(req, res) { //管理员
-		res.render('login');
+		if(req.session.userName){
+			res.redirect("/addArticle");
+		}else{
+			res.render('login');
+		}
 	});
 	app.post("/login", function(req, res) {
 		var body = req.body,

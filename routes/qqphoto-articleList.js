@@ -30,7 +30,6 @@ module.exports = function(app, db, config, logger) {
 						if (data.length) {
 							data.forEach(function(item, index) {
 								item.updateTime = moment(Number(item.updateTime)).format("YYYY-MM-DD HH:mm");
-								item.imgSrc = "/upload/" + item.imgSrc;
 								item.status = item.status == 0 ? "审核中" : "正常显示";
 								item.type = config.type[item.type];
 							});
@@ -182,6 +181,6 @@ module.exports = function(app, db, config, logger) {
 			};
 		})
 	};
-	articleChange("/articleOk",'update');//更新文章状态
-	articleChange("/articleDel",'remove');//删除文章
+	articleChange("/articleOk", 'update'); //更新文章状态
+	articleChange("/articleDel", 'remove'); //删除文章
 };

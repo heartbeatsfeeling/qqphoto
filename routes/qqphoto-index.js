@@ -8,14 +8,13 @@ module.exports = function(app, db, config, logger) {
 			sort: {
 				up: -1
 			},
-			limit: 20
+			limit: 30
 		}).toArray(function(err, doc) {
 			if (err) {
 				res.render('404')
 			} else {
 				doc.forEach(function(item, i) {
-					item.time = moment(Number(item.updateTime)).format("YYYY-MM-DD HH:mm");
-					item.imgSrc = "/upload/" + item.imgSrc;
+					item.updateTime = moment(Number(item.updateTime)).format("YYYY-MM-DD HH:mm");
 				});
 				res.render('qqphoto-index', {
 					data: doc
@@ -27,28 +26,35 @@ module.exports = function(app, db, config, logger) {
 		app.get(url, function(req, res) {
 			var id = req.query.id,
 				_id = mongodb.ObjectId(id);
-			db.collection('article')[cmd]({
-				_id: _id
-			}, set, function(err, doc) {
-				if (err) {
-					res.json({
-						msg: "出错",
-						code: 0
-					})
-				} else {
-					if (doc.result.n == 1) {
-						res.json({
-							msg: "",
-							code: 1
-						})
-					} else {
+			if (id) {
+				db.collection('article')[cmd]({
+					_id: _id
+				}, set, function(err, doc) {
+					if (err) {
 						res.json({
 							msg: "出错",
 							code: 0
 						})
+					} else {
+						if (doc.result.n == 1) {
+							res.json({
+								msg: "",
+								code: 1
+							})
+						} else {
+							res.json({
+								msg: "出错",
+								code: 0
+							})
+						}
 					}
-				}
-			})
+				})
+			} else {
+				res.json({
+					msg: "出错",
+					code: 0
+				})
+			}
 		});
 	};
 	like('/up', 'update', { //顶

@@ -10,6 +10,13 @@ require(['config'], function(config) {
 				//e.preventDefault();
 			}
 		});
+		$form.on('click','.addPhoto',function(){
+			var $this=$(this);
+			var $formgroup=$this.closest('.formgroup')
+			var $element=$formgroup.find(".input").eq(0).clone();
+			$element.find("input:file").val("");
+			$formgroup.find('.input').last().after($element);
+		});
 		validate({
 			id: "form",
 			tipPlacement: function(element, tip) {

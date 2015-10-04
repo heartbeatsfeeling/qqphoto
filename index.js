@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var log4js = require('log4js');
+var multer=require("multer");
 //db
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
@@ -11,7 +12,7 @@ MongoClient.connect(config.mongodb, function(err, database) {
 		console.log(err);
 	} else {
 		db = database;
-		require('./routes')(app,db,config,logger);
+		require('./routes')(app, db, config, logger);
 		//500
 		//404
 		app.use(function(req, res) { //404
@@ -41,7 +42,39 @@ logger.setLevel('WARN');
 app.use(log4js.connectLogger(logger, {
 	format: ':method :url :remote-addr'
 }));
-//end log
+/*other*/
+//上传文件区
+app.get('/uploadFile', function(req, res) {
+	res.sendfile('./static/uploadFile.html');
+});
+//validate
+app.get('/validate', function(req, res) {
+	res.sendfile('./static/validate/index.html');
+});
+app.post('/file', multer({
+	dest: './static/upload/'
+}), function(req, res) {
+	var str = req.files.file.path;
+	var fileName = str.substring(str.lastIndexOf('/') + 1);
+	var type = " " + fileName.split('.').pop() + " ";
+	var filterType = ' png gif jpg ';
+	var data = null;
+	if (filterType.indexOf(type) != -1) {
+		data = {
+			flag: true,
+			id: 1, //测试使用
+			path: 'http://115.28.213.244:3000/upload/' + fileName
+		};
+	} else {
+		data = {
+			flag: false,
+			id: '',
+			path: ''
+		}
+	};
+	res.end("<body onload=" + "parent.uploadFile.success(" + JSON.stringify(data) + ")></body>");
+});
+/* //other*/
 app.use(express.static(__dirname + "/static"));
 app.set('view engine', 'jade');
 app.set('views', __dirname + "/views");
@@ -49,4 +82,4 @@ app.use(require('body-parser')());
 app.use(require('express-session')({
 	secret: 'keyboard cat'
 }));
-app.listen(3000); 
+app.listen(3000);

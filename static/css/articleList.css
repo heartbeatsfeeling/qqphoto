@@ -16,6 +16,8 @@ table {
     text-decoration: none;
     margin-right: 10px;
     color: #0666c5; }
+  table .minImg {
+    margin-right: 5px; }
 
 #pagination {
   float: right; }

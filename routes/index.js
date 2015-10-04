@@ -5,4 +5,6 @@ module.exports=function(app,db,config,logger){
 	require('./qqphoto-loginOut.js')(app,db,config,logger);
 	require('./qqphoto-index.js')(app,db,config,logger);
 	require('./qqphoto-list.js')(app,db,config,logger);
+	require('./qqphoto-article.js')(app,db,config,logger);
+	require('./qqphoto-common.js')(app,db,config,logger);
 };

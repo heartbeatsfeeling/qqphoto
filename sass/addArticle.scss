@@ -7,6 +7,19 @@ form{
 	textarea,input,select{width:100%;box-sizing:border-box;border:1px solid #cecece;padding:7px 3px;}
 	.error,.tip{height:30px;line-height:30px;color:#a94442;text-align:left;padding-left:80px;}
 	.error{padding-left:80px;}
+	.formgroup{position:relative;}
+	.photo{
+	a{
+		position:absolute;
+		right:5px;
+		top:10px;
+		font-style:normal;
+		cursor:pointer;
+	}
+	.input{
+		margin-bottom:10px;
+	}
+}
 }
 .add{
 	position: absolute;
@@ -15,3 +28,4 @@ form{
 	top:200px;
 	color:red;
 }
+

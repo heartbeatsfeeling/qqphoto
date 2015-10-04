@@ -21,12 +21,13 @@ html(lang='zh-CN')
 					th 状态
 					th 操作
 				each d in data
-					tr(data-id=d._id)
+					tr(data-id="#{d._id}")
 						td #{d.title}
 						td #{d.desc}
 						td #{d.type}
 						td
-							img(src=d.imgSrc,width='80',height='80',title="点击放大").minImg
+							each img in d.imgSrc
+								img(src="/upload/#{img.name}",width='80',height='80',title="点击放大").minImg
 						td #{d.author}
 						td #{d.updateTime}
 						td #{d.status}

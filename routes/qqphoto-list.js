@@ -22,7 +22,6 @@ module.exports = function(app, db, config, logger) {
 					data = doc.slice(0).splice(skip, num);
 					if (data.length) {
 						data.forEach(function(item,i){
-							item.imgSrc="/upload/"+item.imgSrc;
 							item.time = moment(Number(item.updateTime)).format("YYYY-MM-DD HH:mm");
 						});
 						res.render("qqphoto-list", {

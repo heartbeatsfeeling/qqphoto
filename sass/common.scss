@@ -50,12 +50,13 @@ extend1{
 			transition:background 0.5s ease;
 			border-radius:8px;
 		}
-		a:hover{
+		.current a,a:hover{
 			background-color:#ff6793;
 			color:#fff;
 		}
 	}
 	.hot{
+		min-height:700px;
 		li{
 			width:180px;
 			margin:0 14px 20px 0;
@@ -90,7 +91,6 @@ extend1{
 				span{
 					padding-left:4px;
 					font-size:14px;
-					vertical-align:1px
 				}
 			}
 			.icon-xinsui{
@@ -105,7 +105,76 @@ extend1{
 		float:right;
 	}
 }
+.article{
+	.content{
+		min-height:500px;
+		h1{
+			text-align:center;
+			font-size:20px;
+			height:40px;
+			line-height:40px;
+		}
+		.info{
+			text-align:center;
+			height:40px;
+			line-height:40px;
+			span{
+			margin-right:20px;
+			}
+		}
+		ul{
+			padding-top:10px;
+			li{
+				margin-left:12px;
+				margin-bottom:16px;
+			}
+		}
+		.like{
+			padding-top:10px;
+			color:#ff6793;
+			font-size:14px;
+			i{
+				margin-right:10px;
+				cursor:pointer;
+			}
+		}
+		.icon-xiazai{
+			color: #699f00;
+		}
 
+	}
+}
+.test-photo{
+	position:relative;
+	width:280px;
+	height:410px;
+	background:url("../images/test-photo.jpg");
+	.test-photo-max,
+	.test-photo-min{
+		left:11px;
+		position:absolute;
+		border-radius:2px;
+		overflow:hidden;
+	}
+	.test-photo-max{
+		top:44px;
+		width:60px;
+		height:60px;
+	}
+	.test-photo-min{
+		top:244px;
+		width:40px;
+		height:40px;
+	}
+	.test-photo-max img{
+		width:60px;
+		height:60px;
+	}
+	.test-photo-min img{
+		width:40px;
+		height:40px;
+	}
+}
 .footer-index{
 	 @extend extend1;
 	text-align:center;

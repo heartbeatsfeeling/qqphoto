@@ -24,6 +24,16 @@ form {
     padding-left: 80px; }
   form .error {
     padding-left: 80px; }
+  form .formgroup {
+    position: relative; }
+  form .photo a {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    font-style: normal;
+    cursor: pointer; }
+  form .photo .input {
+    margin-bottom: 10px; }
 
 .add {
   position: absolute;
