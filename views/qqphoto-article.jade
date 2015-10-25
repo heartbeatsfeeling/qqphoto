@@ -1,27 +1,16 @@
 doctype html
 html(lang='zh-CN')
 	head
-		title #{data.title} QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像 QQ头像网 
+		title #{data.title} by QQ头像网 
 		meta(http-equiv="Content-Type",content="text/html; charset=utf-8")
 		meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
 		meta(name="keywords",content="#{data.title} 最新的QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像 QQ头像网")
-		meta(name="description" content="欢迎来到QQ头像网，本站为您提供最新的QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像等。")
+		meta(name="description" content="#{data.title} 来至于QQ头像网")
 		link(type="text/css",rel="stylesheet",href="/css/style.css")
 		link(type="text/css",rel="stylesheet",href="/css/common.css")
 		link(type="text/css",rel="stylesheet",href="/css/ui-dialog.css")
 	body
-		.header-index
-			.container.clearfix
-				.logo.l
-					a(href="/index.html",title="QQ头像网") QQ头像网
-				.header-nav.r
-					//ul
-						li
-							a(href="/index.html",title="QQ男生头像") QQ男生头像
-						li
-							a(href="/index.html",title="QQ女生头像") QQ女生头像
-						li
-							a(href="/index.html",title="QQ情侣头像") QQ情侣头像
+		include com/header
 		.container.main
 			.item
 				include com/qqphoto-sliderNav
@@ -34,17 +23,14 @@ html(lang='zh-CN')
 						span 查看次数：#{data.view}
 					ul.clearfix
 						each item in data.imgSrc
-							li(data-id="#{item._id}")
+							li
 								.inner
 									.img
-										img(src="upload/#{item.name}",width=180,height=180,alt="#{cnType}")
+										img(src="/upload/#{item.name}",width=180,height=180,alt="#{cnType}")
 									.like
-										a(href="/download?id=#{item.name}")
+										a(href="/download?imgId=#{item.name}&id=#{data._id}")
 											i.icon-xiazai.icon(title="下载")
-										i.icon-yifu.icon.try(title="试用")
-		.footer-index
-			.container
-				p ©Copyright 2015 qq头像网
-				p 版权声明：本站内容均来自于网络，如需删除请联系网站管理员
-	script(src="/js/lib/require.js",type="text/javascript",data-main="/js/config")
-	script(src="/js/common.js",type="text/javascript")
+										i.icon-yifu.icon.try(title="查看效果")
+		include com/footer
+		script(src="/js/lib/require.js",type="text/javascript",data-main="/js/config")
+		script(src="/js/common.js",type="text/javascript")

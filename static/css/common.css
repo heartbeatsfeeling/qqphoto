@@ -66,15 +66,15 @@ extend1, .header-index, .footer-index {
       cursor: pointer;
       font-size: 18px;
       color: #ff6793;
-      text-align: left;
-      width: 50px;
+      text-align: center;
+      width: 25%;
       height: 30px;
       transition: font-size 0.3s ease;
       overflow: hidden; }
       .main .hot .like i span {
         padding-left: 4px;
         font-size: 14px; }
-    .main .hot .like .icon-xinsui {
+    .main .hot .like .icon-xinsui, .main .hot .like .icon-downLoadNum {
       color: #009adb; }
     .main .hot .like i:hover {
       font-size: 20px; }

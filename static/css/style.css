@@ -224,7 +224,7 @@ legend {
   content: "\e604"; }
 
 .icon-xin:before {
-  content: "\e649"; }
+  content: "\e694"; }
 
 .icon-liulan:before {
   content: "\e6c9"; }
@@ -234,6 +234,9 @@ legend {
 
 .icon-yifu:before {
   content: "\e652"; }
+
+.icon-downLoadNum:before {
+  content: "\e6d8"; }
 
 .loading1 {
   display: inline-block;

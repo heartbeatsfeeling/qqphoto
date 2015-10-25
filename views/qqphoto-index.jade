@@ -9,18 +9,7 @@ html(lang='zh-CN')
 		link(type="text/css",rel="stylesheet",href="/css/style.css")
 		link(type="text/css",rel="stylesheet",href="/css/common.css")
 	body
-		.header-index
-			.container.clearfix
-				.logo.l
-					a(href="/index.html",title="QQ头像网") QQ头像网
-				.header-nav.r
-					//ul
-						li
-							a(href="/index.html",title="QQ男生头像") QQ男生头像
-						li
-							a(href="/index.html",title="QQ女生头像") QQ女生头像
-						li
-							a(href="/index.html",title="QQ情侣头像") QQ情侣头像
+		include com/header
 		.container.main
 			.item
 				include com/qqphoto-sliderNav
@@ -31,8 +20,8 @@ html(lang='zh-CN')
 							li(data-id="#{item._id}")
 								.inner
 									.img
-										a(href="/article?id=#{item._id}",target="_blank")
-											img(src="upload/#{item.imgSrc[0].name}",width=180,height=180,title="#{item.title}")
+										a(href="/article/#{item._id}",target="_blank")
+											img(src="/upload/#{item.imgSrc[0].name}",width=180,height=180,title="#{item.title}")
 									.desc #{item.desc}
 									.info.clearfix
 										.span.l #{item.updateTime}
@@ -44,9 +33,9 @@ html(lang='zh-CN')
 											span #{item.down}
 										i.icon-liulan.icon(title="浏览")
 											span #{item.view}
-		.footer-index
-			.container
-				p ©Copyright 2015 qq头像网
-				p 版权声明：本站内容均来自于网络，如需删除请联系网站管理员
+										i.icon-downLoadNum.icon(title="使用量")
+											span #{item.downLoad}
+											
+		include com/footer
 		script(src="/js/lib/require.js",type="text/javascript",data-main="/js/config")
 		script(src="/js/common.js",type="text/javascript")

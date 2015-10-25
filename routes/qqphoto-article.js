@@ -1,8 +1,9 @@
 module.exports = function(app, db, config, logger) {
 	var mongodb = require("mongodb"),
 		moment = require("moment");
-	app.get("/article", function(req, res) {
-		var id = req.query.id;
+	app.get("/article/:id", function(req, res) {
+		var id=req.params.id;
+		console.log(id);
 		if (id&&id.length===24) {
 			db.collection('article').find({
 				_id: mongodb.ObjectId(id)

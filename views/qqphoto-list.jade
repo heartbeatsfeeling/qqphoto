@@ -1,26 +1,15 @@
 doctype html
 html(lang='zh-CN')
 	head
-		title QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像 QQ头像网 
+		title #{title} #{title}小清新 #{title}带字 #{title}大全 #{title}伤感 by QQ头像网 
 		meta(http-equiv="Content-Type",content="text/html; charset=utf-8")
 		meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
-		meta(name="keywords",content="#{title} 最新的QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像 QQ头像网")
-		meta(name="description" content="欢迎来到QQ头像网，本站为您提供最新的QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像等。")
+		meta(name="keywords",content="#{title} #{title}小清新 #{title}带字 #{title}大全  #{title}伤感")
+		meta(name="description" content="最新的#{title}")
 		link(type="text/css",rel="stylesheet",href="/css/style.css")
 		link(type="text/css",rel="stylesheet",href="/css/common.css")
 	body
-		.header-index
-			.container.clearfix
-				.logo.l
-					a(href="/index.html",title="QQ头像网") QQ头像网
-				.header-nav.r
-					//ul
-						li
-							a(href="/index.html",title="QQ男生头像") QQ男生头像
-						li
-							a(href="/index.html",title="QQ女生头像") QQ女生头像
-						li
-							a(href="/index.html",title="QQ情侣头像") QQ情侣头像
+		include com/header
 		.container.main
 			.item
 				include com/qqphoto-sliderNav
@@ -31,8 +20,8 @@ html(lang='zh-CN')
 						li(data-id="#{item._id}")
 							.inner
 								.img
-									a(href="/article?id=#{item._id}",target="_blank")
-										img(src="upload/#{item.imgSrc[0].name}",width=180,height=180,title="#{item.title}")
+									a(href="/article/#{item._id}",target="_blank")
+										img(src="/upload/#{item.imgSrc[0].name}",width=180,height=180,title="#{item.title}")
 								.desc #{item.desc}
 								.info.clearfix
 									.span.l #{item.time}
@@ -44,12 +33,11 @@ html(lang='zh-CN')
 										span #{item.down}
 									i.icon-liulan.icon(title="浏览")
 										span #{item.view}
+									i.icon-downLoadNum.icon(title="使用量")
+										span #{item.downLoad}
 			.pagination-sm.clearfix
 				ul#pagination
-		.footer-index
-			.container
-				p ©Copyright 2015 qq头像网
-				p 版权声明：本站内容均来自于网络，如需删除请联系网站管理员
+		include com/footer
 		script.
 			var totalPage="#{totalPage}";
 			var type="#{type}";

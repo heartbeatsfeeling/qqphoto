@@ -1,7 +1,7 @@
 module.exports = function(app, db, config, logger) {
 	var moment = require('moment'),
 		mongodb = require('mongodb');
-	app.get("/index.html", function(req, res) { //首页
+	app.get("/", function(req, res) { //首页
 		db.collection("article").find({
 			status: '1'
 		}, {

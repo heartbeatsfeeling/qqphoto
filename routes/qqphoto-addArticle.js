@@ -75,7 +75,8 @@ module.exports = function(app, db, config, logger) {
 					down: 0,
 					collect: 0,
 					view: 0,
-					status: '0'
+					status: '0',
+					downLoad:0
 				}, function(err) {
 					if (err) {
 						msg = "数据库操作失败"

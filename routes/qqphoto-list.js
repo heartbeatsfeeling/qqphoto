@@ -1,7 +1,7 @@
 module.exports = function(app, db, config, logger) {
 	var moment=require('moment');
-	app.get("/list", function(req, res) {
-		var query = req.query,
+	app.get("/list/:id/:page", function(req, res) {
+		var query = req.params,
 			type = query.id,
 			page = query.page || 1,
 			cnType = config.type[type],
