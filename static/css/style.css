@@ -1,9 +1,9 @@
 html {
-  font-size: 14px;
   color: #000;
   background: #fff; }
 
 html, body {
+  font-size: 14px;
   font-family: "Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,tahoma,arial,Verdana,sans-serif,"WenQuanYi Micro Hei","\5B8B\4F53";
   color: #333; }
 
@@ -237,6 +237,35 @@ legend {
 
 .icon-downLoadNum:before {
   content: "\e6d8"; }
+
+@media screen and (max-width: 768px) {
+  body .container {
+    width: 320px; }
+  body .logo {
+    padding-left: 1em; }
+  body .subNav {
+    width: 100%; }
+  body .header-index, body .footer-index {
+    min-width: 320px !important; }
+  body .main .subNav li {
+    width: 96px; }
+  body .main .hot li {
+    width: 150px;
+    margin-right: 10px; }
+    body .main .hot li img {
+      text-align: center;
+      width: 150px;
+      height: 150px; }
+  body .article .content .info span:first-child {
+    display: none; }
+  body .article .content ul li {
+    margin-left: 5px; }
+    body .article .content ul li img {
+      width: 150px;
+      height: 150px; } }
+
+#cnzz_stat_icon_1256641704 {
+  display: none; }
 
 .loading1 {
   display: inline-block;

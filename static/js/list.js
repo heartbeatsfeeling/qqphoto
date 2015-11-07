@@ -4,7 +4,7 @@ require(['config'], function(config) {
 		$('#pagination').twbsPagination({
 			totalPages: totalPage,
 			visiblePages: 7,
-			href:"/list?id="+type+"&page={{number}}",
+			href:"/list/"+type+"/{{number}}",
 			onPageClick: function(event, page) {}
 		});
 	});

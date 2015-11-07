@@ -7,4 +7,5 @@ module.exports=function(app,db,config,logger){
 	require('./qqphoto-list.js')(app,db,config,logger);
 	require('./qqphoto-article.js')(app,db,config,logger);
 	require('./qqphoto-common.js')(app,db,config,logger);
+	require('./gm-image.js')(app,db,config,logger);
 };

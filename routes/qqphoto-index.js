@@ -6,7 +6,7 @@ module.exports = function(app, db, config, logger) {
 			status: '1'
 		}, {
 			sort: {
-				up: -1
+				'updateTime': -1
 			},
 			limit: 30
 		}).toArray(function(err, doc) {

@@ -1,11 +1,12 @@
 doctype html
 html(lang='zh-CN')
 	head
-		title QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像 QQ头像网 
-		meta(http-equiv="Content-Type",content="text/html; charset=utf-8")
-		meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
-		meta(name="keywords",content="最新的QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像 QQ头像网")
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		meta(name="keywords" content="最新的QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像 QQ头像网")
 		meta(name="description" content="欢迎来到QQ头像网，本站为您提供最新的QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像等。")
+		title QQ头像 QQ男生头像 QQ女生头像 QQ情侣头像 QQ头像网
 		link(type="text/css",rel="stylesheet",href="/css/style.css")
 		link(type="text/css",rel="stylesheet",href="/css/common.css")
 	body
@@ -15,26 +16,26 @@ html(lang='zh-CN')
 				include com/qqphoto-sliderNav
 			.item.hot
 				h2 热门头像
-					ul.clearfix
-						each item in data
-							li(data-id="#{item._id}")
-								.inner
-									.img
-										a(href="/article/#{item._id}",target="_blank")
-											img(src="/upload/#{item.imgSrc[0].name}",width=180,height=180,title="#{item.title}")
-									.desc #{item.desc}
-									.info.clearfix
-										.span.l #{item.updateTime}
-										span.r #{item.author}
-									.like
-										i.icon-xin.icon.up(title="不错")
-											span #{item.up}
-										i.icon-xinsui.icon.down(title="太差")
-											span #{item.down}
-										i.icon-liulan.icon(title="浏览")
-											span #{item.view}
-										i.icon-downLoadNum.icon(title="使用量")
-											span #{item.downLoad}
+				ul.clearfix
+					each item in data
+						li(data-id="#{item._id}")
+							.inner
+								.img
+									a(href="/article/#{item._id}",target="_blank")
+										img(src="/upload/#{item.imgSrc[0].name}",width=180,height=180,title="#{item.title}")
+								.desc #{item.desc}
+								.info.clearfix
+									.span.l #{item.updateTime}
+									span.r #{item.author}
+								.like
+									i.icon-xin.icon.up(title="不错")
+										span #{item.up}
+									i.icon-xinsui.icon.down(title="太差")
+										span #{item.down}
+									i.icon-liulan.icon(title="浏览")
+										span #{item.view}
+									i.icon-downLoadNum.icon(title="使用量")
+										span #{item.downLoad}
 											
 		include com/footer
 		script(src="/js/lib/require.js",type="text/javascript",data-main="/js/config")

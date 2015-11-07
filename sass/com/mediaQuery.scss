@@ -1,0 +1,50 @@
+@media screen and (max-width: 768px) {
+	body{
+		.container{
+			width:320px;
+		}
+		.logo{
+			padding-left:1em;
+		}
+		.subNav{
+			width:100%;
+		}
+		.header-index, .footer-index{
+			min-width: 320px !important;
+		}
+		.main{
+			.subNav{
+				li{
+					width:96px;
+				}
+			}
+			.hot{
+				li{
+					width:150px;
+					margin-right:10px;
+					img{
+						text-align:center;
+						width:150px;
+						height:150px;
+					}
+				}
+			}
+		}
+		.article{
+			.content{
+				.info{
+					span:first-child{
+						display:none;
+					}
+				}
+				ul li{
+					margin-left:5px;
+					img{
+						width:150px;
+						height:150px;
+					}
+				}
+			}
+		}  
+	}
+}

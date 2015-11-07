@@ -32,9 +32,9 @@ html(lang='zh-CN')
 			.formgroup.clearfix.photo
 				label.l(for="file") 头像
 				.input
-					input(type='file')#file(name="file")
+					input(type='file')#file(name="file",multiple="true")
 				.tip.clearfix
-				a.addPhoto(href="javascript:;",title="增加") 增加
+				//a.addPhoto(href="javascript:;",title="增加") 增加
 			.button.clearfix
 				button.r.btn-ok 提交
 		script(src="/js/lib/require.js",type="text/javascript",data-main="/js/config")

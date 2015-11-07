@@ -7,7 +7,7 @@ require(['config'], function(config) {
 			if (validate.get('form').valid()) {
 				
 			} else {
-				//e.preventDefault();
+				e.preventDefault();
 			}
 		});
 		$form.on('click','.addPhoto',function(){

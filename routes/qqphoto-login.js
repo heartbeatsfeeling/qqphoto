@@ -32,6 +32,7 @@ module.exports = function(app,db,config,logger) { //登录
 			md5.update(password);
 			md5Password = md5.digest('hex');
 			result.md5Password = md5Password;
+			console.log(md5Password==='a644c1f3ac3319c29c7540e2845538f3')
 			db.collection('user').find({
 				name: userName,
 				password: md5Password

@@ -1,6 +1,6 @@
 module.exports = function() {
 	return {
-		mongodb: "mongodb://115.28.213.244:27017/qqphoto",
+		mongodb: "mongodb://127.0.0.1:27017/qqphoto",
 		type: {
 			"nanshengtouxiang": "QQ男生头像",
 			"nvshengtouxiang": "QQ女生头像",
@@ -9,8 +9,8 @@ module.exports = function() {
 			"hetouxiang": "QQ黑系",
 			"baitouxiang": "QQ白系",
 			"dongtaitouxiang": "QQ动态头像",
-			"shanggantouxiang":"伤感头像",
-			"wenzitouxiang": "QQ代文字头像",
+			"shanggantouxiang":"QQ伤感头像",
+			"wenzitouxiang": "QQ带文字头像",
 			"oumeitouxiang": "QQ欧美头像",
 			"dongmantouxiang": "QQ动漫头像",
 			"weixintouxiang": "QQ微信头像",
