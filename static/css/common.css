@@ -70,7 +70,8 @@ extend1, .header-index, .footer-index {
       width: 25%;
       height: 30px;
       transition: font-size 0.3s ease;
-      overflow: hidden; }
+      overflow: hidden;
+      text-align: left; }
       .main .hot .like i span {
         padding-left: 4px;
         font-size: 14px; }

@@ -23,7 +23,10 @@ html(lang='zh-CN')
 								.img
 									a(href="/article/#{item._id}",target="_blank")
 										img(src="/upload/#{item.imgSrc[0].name}",width=180,height=180,title="#{item.title}")
-								.desc #{item.desc}
+								
+								.desc 
+									a(href="/article/#{item._id}",target="_blank",title="#{item.desc}") #{item.desc}
+										
 								.info.clearfix
 									.span.l #{item.updateTime}
 									span.r #{item.author}
@@ -32,10 +35,10 @@ html(lang='zh-CN')
 										span #{item.up}
 									i.icon-xinsui.icon.down(title="太差")
 										span #{item.down}
-									i.icon-liulan.icon(title="浏览")
-										span #{item.view}
-									i.icon-downLoadNum.icon(title="使用量")
-										span #{item.downLoad}
+									//i.icon-liulan.icon(title="浏览")
+										//span #{item.view}
+									//i.icon-downLoadNum.icon(title="使用量")
+										//span #{item.downLoad}
 											
 		include com/footer
 		script(src="/js/lib/require.js",type="text/javascript",data-main="/js/config")
