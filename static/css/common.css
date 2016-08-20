@@ -59,6 +59,8 @@ extend1, .header-index, .footer-index {
   .main .hot .desc {
     color: #4580af;
     font-size: 12px; }
+    .main .hot .desc a {
+      color: #009adb; }
   .main .hot .like {
     position: relative; }
     .main .hot .like i {
